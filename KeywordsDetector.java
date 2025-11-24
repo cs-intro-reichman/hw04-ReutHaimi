@@ -22,37 +22,42 @@ public class KeywordsDetector {
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
     for (int i = 0; i < sentences.length; i++) {
-        int [] spaces = new int [sentences[i].length()];
-        String [] words = new String [spaces.length +1];
-        int t= 0;
+        int[] spaces = new int[sentences[i].length()];
+        String[] words = new String[spaces.length + 1];
+        int t = 0;
+
         // finding all the spaces
-        for (int s = 0; s < sentences[i].length() ; s++) {
-              if (sentences[i].charAt(s) == ' '){
+        for (int s = 0; s < sentences[i].length(); s++) {
+            if (sentences[i].charAt(s) == ' ') {
                 spaces[t] = s;
                 t++;
             }
         }
-        // cutting all the word int the sentence according to spaces
+
+        // cutting all the words in the sentence according to spaces
         int begging = 0;
         int wordsCounter = 0;
-        for (int s = 0; s < t ; s++) {
+        for (int s = 0; s < t; s++) {
             words[wordsCounter] = sentences[i].substring(begging, spaces[s]);
             wordsCounter++;
             begging = spaces[s] + 1;
         }
-        words [wordsCounter] = sentences[i].substring(begging);
+        words[wordsCounter] = sentences[i].substring(begging);
         wordsCounter++;
 
-        // checking for specific words 
-        for (int l = 0; l < wordsCounter ; l ++) {
-            for (int j = 0 ; j < keywords.length ; j++){
-                if (words[l].equals(keywords[j])){
+        // checking for specific words
+        for (int l = 0; l < wordsCounter; l++) {
+
+            String cleanWord = words[l].replaceAll("[^A-Za-z]", "");
+
+            for (int j = 0; j < keywords.length; j++) {
+
+                if (cleanWord.equalsIgnoreCase(keywords[j])) {
                     System.out.println(sentences[i]);
                     break;
                 }
-    }
+            }
         }
-
-}
+    }
 }
 }
