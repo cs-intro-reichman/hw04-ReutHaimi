@@ -196,8 +196,10 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
 
-    public static int compareTo(String str1, String str2) {
-
+public static int compareTo(String str1, String str2) {
+    if (str1 == null && str2 == null) {
+        return 0;
+    }
     if (str1 == null || str2 == null) {
         return -2;
     }
@@ -214,8 +216,8 @@ public class ArrCharOps {
         if (c1 < c2) {
             return -1;
         }
-
     }
+
     if (str1.length() > str2.length()) {
         return 1;
     }
