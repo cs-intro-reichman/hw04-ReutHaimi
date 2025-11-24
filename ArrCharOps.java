@@ -197,38 +197,32 @@ public class ArrCharOps {
      */
 
 public static int compareTo(String str1, String str2) {
+        if ( str1=="" || str2=="" ) {
+            return -2;}
+        if ( str1.length() == 0 || str2.length() == 0 ) {
+            return -2;}
+        if ( str1.length() < str2.length() ){
+            return -1;}
 
-    if (str1 == null || str2 == null) {
+        char [] str3 = new char[str1.length()];
+        char [] str4 = new char[str2.length()];
+
+        int i =0;
+        while ( i<str3.length || i<str4.length ) {
+            if ( i < str3.length ) str3[i] = str1.charAt(i) ;
+            if( i < str4.length ) str4[i] = str2.charAt(i);
+            i++;
+        }
+        if ( equals(str3,str4 )){
+            return 0;}
+        else {
+            int j = 0;
+            while (indexOf(str4, str3[j]) != -1) {
+                j++;
+            }
+            if(str3[j]>str4[j]) return 1;
+        }
         return -2;
     }
 
-    str1 = str1.toLowerCase();
-    str2 = str2.toLowerCase();
-
-    int minLen = Math.min(str1.length(), str2.length());
-
-    for (int i = 0; i < minLen; i++) {
-        char c1 = str1.charAt(i);
-        char c2 = str2.charAt(i);
-
-        if (c1 > c2) {
-            return 1;
-        }
-        if (c1 < c2) {
-            return -1;
-        }
-    }
-
-    if (str1.length() > str2.length()) {
-        return 1;
-    }
-    if (str1.length() < str2.length()) {
-        return -1;
-    }
-
-    return 0;
 }
-}
-    
-    
-
