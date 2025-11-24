@@ -44,6 +44,11 @@ public class ArrCharOps {
      *  returns true; Otherwise returns false.
      */
     public static boolean equals(char[] arr1, char[] arr2) {
+        if (arr1 == null && arr2 == null){
+            return true;
+        } else if (arr1 == null || arr2 == null){
+            return false;
+        }
         if (arr1.length != arr2.length)
         {
             return false;
