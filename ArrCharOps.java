@@ -111,8 +111,14 @@ public class ArrCharOps {
     /* Returns an array which is the concatanation of the two given arrays.
     */
     public static char[] concat(char[] arr1, char[] arr2) {
-        if (arr1.length == 0 || arr2.length == 0){
+        if (arr1 == null && arr2 == null){
             return null;
+        }
+        if (arr1 == null) {
+            return arr2;
+        }
+        if (arr2 == null) {
+            return arr1;
         }
         char [] newArr = new char [arr1.length + arr2.length + 1];
 
