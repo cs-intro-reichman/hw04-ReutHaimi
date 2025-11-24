@@ -120,7 +120,7 @@ public class ArrCharOps {
         if (arr2 == null) {
             return arr1;
         }
-        char [] newArr = new char [arr1.length + arr2.length + 1];
+        char [] newArr = new char [arr1.length + arr2.length];
 
         for (int i = 0; i < arr1.length; i++) {
         newArr [i] = arr1[i];     
@@ -197,6 +197,9 @@ public class ArrCharOps {
      */
 
     public static int compareTo(String str1, String str2) {
+    if (str1 == null && str2 == null) {
+        return 0;
+    }
     if (str1 == null || str2 == null) {
         return -2;
     }
