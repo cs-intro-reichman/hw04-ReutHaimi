@@ -20,7 +20,12 @@ public class Primes {
             System.out.println(i);
         }
     }
-    System.out.println("There are " + counter + " primes between 2 and " + n);
+    System.out.println(counter);
+    System.out.println(n);
+    int precentage = (int)(((double)counter / (double)n) * 100) ;
+    System.out.println(precentage);
+    System.out.println("There are " + counter + " primes between 2 and " + n + " (" + precentage + " % are primes)");
 
     }
 }
+
