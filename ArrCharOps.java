@@ -57,11 +57,10 @@ public class ArrCharOps {
         for (int i =0 ; i < arr1.length ; i++){
             char char1 = arr1[i];
             char char2 = arr2[i];
-            if (char1 == char2)
+            if (char1 != char2)
             {
-                i ++;
+                return false;
             }
-            else { return false; }
         }
         return true;
     }
@@ -121,10 +120,8 @@ public class ArrCharOps {
         newArr [i] = arr1[i];     
         }
         
-        newArr [arr1.length] = ' ';
-
-        for (int i = arr1.length; i < arr1.length + arr2.length ; i++) {
-          newArr [i + 1] = arr2 [i - arr1.length];
+        for (int i = 0; i < arr2.length ; i++) {
+          newArr [arr1.length + i] = arr2 [i];
         }
                 return newArr;
     }
@@ -139,13 +136,12 @@ public class ArrCharOps {
         int newArrIndex = 0;
         char [] newArr = new char[endIndex - beginIndex];
         while (i < endIndex){
-            newArr[newArrIndex] = arr[i]; 
+            newArr[newArrIndex] = arr[i];
             i++;
+            newArrIndex ++;
         }
-        if (newArr.length > 0){
-            return newArr;
-        }
-        return null;
+
+        return newArr;
     }
 
      /** Returns a single integer that represents the given array. This integer is sometimes 
@@ -194,10 +190,16 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1 == null || str2 == null)
-        {
-            return -2;
+        if (str1 == null && str2 == null) {
+            return 0;
         }
+        if (str1 == null) {
+          return -1;
+        }
+        if (str2 == null) {
+          return 1;
+        }
+
             int iteration = 0;
             if (str1.length() >= str2.length()){
                 iteration = str2.length();}
@@ -210,9 +212,6 @@ public class ArrCharOps {
                  }
                  else if (str1.charAt(i) < str2.charAt(i)){
                     return -1;
-                 }
-                 else {
-                    i ++;
                  }
                 }
                 if (str1.length() > str2.length()){
